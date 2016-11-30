@@ -13,7 +13,7 @@ ul.menu
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: DarkRed;
+	background-color: Black;
 }
 
 ul.menu li
@@ -32,7 +32,28 @@ ul.menu li a
 
 ul.menu li a:hover
 {
-	background-color: Crimson;
+	background-color: Gray;
+}
+
+input[type=text] 
+{
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/search_icon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    align: center;
+}
+
+input[type=text]:focus {
+    width: 80%;
 }
 
 h1 
