@@ -1,3 +1,6 @@
+<?php
+	require_once("includes/connect.php");
+?>
 <html>
 <head>
 
@@ -8,26 +11,6 @@ MovieDb Home
 </head>
 
 <body class="background">
-<?php
-	ini_set('display_errors', 1);
-	error_reporting(E_ALL & E_NOTICE);
-
-	if($connection=@mysql_connect('localhost', 'whoffman1', 'whoffman1'))
-	{
-	}
-	else
-	{
-		die('<p>Could not connect to MySQL because:<b>'.mysql_error().'</b></p>');
-	}
-	if(@mysql_select_db("whoffman1DB", $connection))
-	{
-	}
-	else
-	{
-		die('<p>Could not select the whoffman11DB database because:<b>'.mysql_error().'</b></p>');
-	}
-?>
-
 <div>
 	<ul class="menu">
 		<li><a href="home.php">Home</a></li>
@@ -40,10 +23,6 @@ MovieDb Home
 <h1>
 	Movie YouTube Database
 </h1>
-
-<form class="search">
-<input type="text" name="searchbox" placeholder="Search..">
-</form>
 
 <?php
 	$topFour = "SELECT * FROM movies ORDER BY ReleaseDate DESC LIMIT 4";
