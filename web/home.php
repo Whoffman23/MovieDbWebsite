@@ -1,24 +1,14 @@
 <?php
 	require_once("includes/connect.php");
+	include("includes/navbar.html");
 ?>
 <html>
 <head>
-
-<title>
-MovieDb Home
-</title>
-<link rel="stylesheet" href="css/main.css"/>
+	<title>MovieDb Home</title>
+	<link rel="stylesheet" href="css/main.css"/>
 </head>
 
 <body class="background">
-<div>
-	<ul class="menu">
-		<li><a href="home.php">Home</a></li>
-		<li><a href="jeremyjahns.php">Jeremy Jahns</a></li>
-		<li><a href="schmoesknow.php">Schmoes Know</a></li>
-		<li><a href="whattheflick.php">What The Flick</a></li>
-	</ul> 
-</div>
 
 <h1>
 	Movie YouTube Database
