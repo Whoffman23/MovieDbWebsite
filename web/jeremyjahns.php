@@ -1,47 +1,81 @@
-<html>
-<head>
+<?php
+	require_once("connect.php");
+	include("navbar.html");
+?>
 
-<title>
- Connecting to the MySQL Server Using PHP
-</title>
+<html>
+
+<head>
+	<title> Connecting to the MySQL Server Using PHP </title>
+	<link rel="stylesheet" href="css/main.css"/>
 </head>
 
-<body>
-<?php
-
-//Address error handling
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL & E_NOTICE);
-
-//Attempt to connect
-
-if($connection=@mysql_connect('localhost', 'mjohnson23', 'mjohnson23')){
-}else{
-	die('<p>Could not connect to MySQL because:<b>'.mysql_error().'</b></p>');
+<style>
+a:link
+{
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
 }
-if(@mysql_select_db("mjohnson23DB", $connection)){
-}else{
-	die('<p>Could not select the tshay1DB database because:<b>'.mysql_error().'</b></p>');
+a:visited
+{
+    color: yellow;
+    background-color: transparent;
+    text-decoration: none;
 }
-$query="SELECT *
-FROM movies, jeremyjahns
-WHERE jeremyjahns.Title = movies.Title ";
-if($r=mysql_query($query)){      
-	while($row=mysql_fetch_array($r)){
-		
-		echo "<p>
-			<img src= '{$row['PosterLink']}' alt='Movie Poster'style='width:304px;height:228px;'>
-                <p>Title:
-                {$row['Title']}</p> 
-                <p>Release Date:
-                {$row['ReleaseDate']}</p>
-                <p>Rating:
-                {$row['Rating']}</p>
-                <p>Youtube Link:
-		        {$row['YouTubeLink']}</p> </p><br>";
+a:hover {
+    //color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+</style>
+
+<style>
+table, th, td {
+    border: 3px solid white;
+    border-left: none;
+    border-right: none;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+table#t01 {  
+    background-color: none;
+    color: white;
+    width:50%; 
+    margin-left:25%; 
+    margin-right:25%;
+}
+</style>
+
+
+
+<body class="background">
+	<br>
+	<?php
+	$query="SELECT A.*, B.YouTubeLink, B.Rating FROM movies A, jeremyjahns B WHERE A.Title = B.Title;";
+	if($r=mysql_query($query)){
+		echo '<table id="t01"><tr><th>MOVIE</th><th>INFORMATION</th><th>Rating</th></tr>';
+		while($row=mysql_fetch_array($r)){
+			echo
+				'<tr><td align="center">' . '<a href=' . $row['YouTubeLink'] . '>' . '<img src=' . $row['PosterLink'] . 'width="100"; height="300">' . '</a><br>'
+				. '<a href=' . $row['YouTubeLink'] . '>' . $row['Title'] . '</a>'
+				. '</td><td align="center"> Release Date: ' . $row['ReleaseDate']
+				. '<br> Directors: ' . $row['Directors']
+				. '<br> Lead Actors: ' . $row['LeadActor1'] . ', ' . $row['LeadActor2'] . ', ' . $row['LeadActor3']
+				. '<br><a href=' . $row['YouTubeLink'] . '> YouTube Link</a>'
+				. '</td><td>' . $row['Rating'] . ' </td></tr>';
+		}
+		echo "</table>";
 	}
-}
-?>
+	?>
+
 </body>
 </html>
