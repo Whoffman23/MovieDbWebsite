@@ -15,7 +15,10 @@
 </h1>
 
 <?php
-	$topFour = "SELECT * FROM movies ORDER BY ReleaseDate DESC LIMIT 4";
+	$topFour = "SELECT * 
+				FROM movies 
+				ORDER BY ReleaseDate DESC 
+				LIMIT 4";
 
 	if ($four = mysql_query($topFour));
 	{
@@ -25,7 +28,7 @@
 			print "<td><table id='posters'>";
 			print "<th colspan= 1>{$movie['Title']}</th>";
 			print "<tr><td> Release Date: {$movie['ReleaseDate']}</td></tr>";
-			print "<tr><td><img src='{$movie['PosterLink']}' class='poster' alt='Movie Poster'></td></tr>";
+			print "<tr><td><a href='movie.php'><img src='{$movie['PosterLink']}' class='poster' alt='Movie Poster'></a></td></tr>";
 			print "<tr><td>Director(s): {$movie['Directors']}</td></tr>";
 			print "<tr><td>Stars: {$movie['LeadActor1']}, {$movie['LeadActor2']}, {$movie['LeadActor3']}</td></tr>";
 			print "</table></td>";

@@ -12,47 +12,244 @@
 <body class="background">
 	<div>
 	<ul class="sort">
-		<li><a href="movielist.php">Meta Critic Score</a></li>
-		<li><a href="movielist.php">Rotten Tomatoes Tomatometer</a></li>
-		<li><a href="movielist.php">IMDb Rating</a></li>
-		<li><a href="movielist.php">Director(s)</a></li>
-		<li><a href="movielist.php">Release Date</a></li>
-		<li><a href="movielist.php">Movie Title</a></li>
+		<li><form method="post"><input name="Title" type="submit" value="Movie Title"/></form></li>
+		<li><form method="post"><input name="Date" type="submit" value="Release Date"/></form></li>
+		<li><form method="post"><input name="Director" type="submit" value="Director(s)"/></form></li>
+		<li><form method="post"><input name="Imdb" type="submit" value="IMDb Rating"/></form></li>
+		<li><form method="post"><input name="Tomato" type="submit" value="Rotten Tomatoes Tomatometer"/></form></li>
+		<li><form method="post"><input name="MetaScore" type="submit" value="Meta Critic Score"/></form></li>
+		</form>
 	</ul> 
 </div>
 
 	<h1>All Movies</h1>
 
 	<?php 
-		$movies = "SELECT A.*, B.Rating, C.Tomatometer, D.Metascore
-					FROM movies A
-					LEFT JOIN imdb B ON B.Title = A.Title
-					LEFT JOIN rottentomatoes C ON C.Title = A.Title
-					LEFT JOIN metacritic D ON D.Title = A.Title";
-
-		if ($films = mysql_query($movies));
+		if (isset($_POST['Title']))
 		{
-			while($movie = mysql_fetch_array($films))
+        	$movies = "SELECT A.*, B.Rating, C.Tomatometer, D.Metascore
+						FROM movies A
+						LEFT JOIN imdb B ON B.Title = A.Title
+						LEFT JOIN rottentomatoes C ON C.Title = A.Title
+						LEFT JOIN metacritic D ON D.Title = A.Title
+						ORDER BY A.Title ASC";
+
+			if ($films = mysql_query($movies));
 			{
-				print "<hr>";
-				print "<div class='movie'>";
-				print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "<span>{$movie['Title']}";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "{$movie['ReleaseDate']}";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "{$movie['Directors']}";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "IMDb: {$movie['Rating']}";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "Tomatometer: {$movie['Tomatometer']}";
-				print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
-				print "Meta score: {$movie['Metascore']}";
-				print "</span></div>";
+				while($movie = mysql_fetch_array($films))
+				{
+					print "<hr>";
+					print "<div class='movie'>";
+					print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "<span>{$movie['Title']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "{$movie['ReleaseDate']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "{$movie['Directors']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "IMDb: {$movie['Rating']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "Tomatometer: {$movie['Tomatometer']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "Meta score: {$movie['Metascore']}";
+					print "</span></div>";
+				}
+			}
+   		}
+   		else if (isset($_POST['Date']))
+		{
+        	$movies = "SELECT A . * , B.Rating, C.Tomatometer, D.Metascore
+							FROM movies A
+							LEFT JOIN imdb B ON B.Title = A.Title
+							LEFT JOIN rottentomatoes C ON C.Title = A.Title
+							LEFT JOIN metacritic D ON D.Title = A.Title
+							ORDER BY A.ReleaseDate DESC";
+
+				if ($films = mysql_query($movies));
+				{
+					while($movie = mysql_fetch_array($films))
+					{
+						print "<hr>";
+						print "<div class='movie'>";
+						print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "<span>{$movie['Title']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['ReleaseDate']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['Directors']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "IMDb: {$movie['Rating']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Tomatometer: {$movie['Tomatometer']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Meta score: {$movie['Metascore']}";
+						print "</span></div>";
+					}
+				}
+   		}
+   		else if (isset($_POST['Director']))
+		{
+        	$movies = "SELECT A. * , B.Rating, C.Tomatometer, D.Metascore
+							FROM movies A
+							LEFT JOIN imdb B ON B.Title = A.Title
+							LEFT JOIN rottentomatoes C ON C.Title = A.Title
+							LEFT JOIN metacritic D ON D.Title = A.Title
+							ORDER BY A.Directors ASC";
+
+				if ($films = mysql_query($movies));
+				{
+					while($movie = mysql_fetch_array($films))
+					{
+						print "<hr>";
+						print "<div class='movie'>";
+						print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "<span>{$movie['Title']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['ReleaseDate']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['Directors']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "IMDb: {$movie['Rating']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Tomatometer: {$movie['Tomatometer']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Meta score: {$movie['Metascore']}";
+						print "</span></div>";
+					}
+				}
+   		}
+   		else if (isset($_POST['Imdb']))
+		{
+        	$movies = "SELECT A. * , B.Rating, C.Tomatometer, D.Metascore
+							FROM movies A
+							LEFT JOIN imdb B ON B.Title = A.Title
+							LEFT JOIN rottentomatoes C ON C.Title = A.Title
+							LEFT JOIN metacritic D ON D.Title = A.Title
+							ORDER BY B.Rating DESC";
+
+				if ($films = mysql_query($movies));
+				{
+					while($movie = mysql_fetch_array($films))
+					{
+						print "<hr>";
+						print "<div class='movie'>";
+						print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "<span>{$movie['Title']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['ReleaseDate']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['Directors']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "IMDb: {$movie['Rating']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Tomatometer: {$movie['Tomatometer']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Meta score: {$movie['Metascore']}";
+						print "</span></div>";
+					}
+				}
+   		}
+   		else if (isset($_POST['Tomato']))
+		{
+        	$movies = "SELECT A. * , B.Rating, C.Tomatometer, D.Metascore
+							FROM movies A
+							LEFT JOIN imdb B ON B.Title = A.Title
+							LEFT JOIN rottentomatoes C ON C.Title = A.Title
+							LEFT JOIN metacritic D ON D.Title = A.Title
+							ORDER BY C.Tomatometer DESC";
+
+				if ($films = mysql_query($movies));
+				{
+					while($movie = mysql_fetch_array($films))
+					{
+						print "<hr>";
+						print "<div class='movie'>";
+						print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "<span>{$movie['Title']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['ReleaseDate']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['Directors']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "IMDb: {$movie['Rating']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Tomatometer: {$movie['Tomatometer']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Meta score: {$movie['Metascore']}";
+						print "</span></div>";
+					}
+				}
+   		}
+   		else if (isset($_POST['MetaScore']))
+		{
+        	$movies = "SELECT A. * , B.Rating, C.Tomatometer, D.Metascore
+							FROM movies A
+							LEFT JOIN imdb B ON B.Title = A.Title
+							LEFT JOIN rottentomatoes C ON C.Title = A.Title
+							LEFT JOIN metacritic D ON D.Title = A.Title
+							ORDER BY D.Metascore DESC";
+
+				if ($films = mysql_query($movies));
+				{
+					while($movie = mysql_fetch_array($films))
+					{
+						print "<hr>";
+						print "<div class='movie'>";
+						print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "<span>{$movie['Title']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['ReleaseDate']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "{$movie['Directors']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "IMDb: {$movie['Rating']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Tomatometer: {$movie['Tomatometer']}";
+						print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+						print "Meta score: {$movie['Metascore']}";
+						print "</span></div>";
+					}
+				}
+   		}
+    	else 
+    	{
+			$movies = "SELECT A.*, B.Rating, C.Tomatometer, D.Metascore
+						FROM movies A
+						LEFT JOIN imdb B ON B.Title = A.Title
+						LEFT JOIN rottentomatoes C ON C.Title = A.Title
+						LEFT JOIN metacritic D ON D.Title = A.Title
+						ORDER BY A.Title ASC";
+
+			if ($films = mysql_query($movies));
+			{
+				while($movie = mysql_fetch_array($films))
+				{
+					print "<hr>";
+					print "<div class='movie'>";
+					print "<img src='{$movie['PosterLink']}'  alt='Movie Poster'>";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "<span>{$movie['Title']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "{$movie['ReleaseDate']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "{$movie['Directors']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "IMDb: {$movie['Rating']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "Tomatometer: {$movie['Tomatometer']}";
+					print "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp";
+					print "Meta score: {$movie['Metascore']}";
+					print "</span></div>";
+				}
 			}
 		}
-	?>
+?>
 </body>
 </html>
 

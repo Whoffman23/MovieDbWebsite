@@ -49,16 +49,24 @@ ul.sort li
 	float: left;
 }
 
-ul.sort li a
+ul.sort li form
 {
-	display: block;
-	color: black;
-	text-align: center;
-	padding: 16px;
-	text-decoration: none;
+	margin-bottom: 0px;
 }
 
-ul.sort li a:hover
+ul.sort li form input[type=submit]
+{
+    background-color: khaki;
+    border: none;
+    color: black;
+    padding: 16px;
+    text-decoration: bold;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Times New Roman";
+}
+
+ul.sort li form input[type=submit]:hover
 {
 	background-color: gold;
 }
@@ -66,11 +74,6 @@ ul.sort li a:hover
 h1 
 {
 	text-align: center;
-	color: white;
-}
-
-h2 
-{
 	color: white;
 }
 
