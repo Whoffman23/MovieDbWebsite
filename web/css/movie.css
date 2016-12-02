@@ -1,1 +1,80 @@
+.background
+{
+	background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
+ul.menu
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: darkred;
+}
+
+ul.menu li
+{
+	float: left;
+}
+
+ul.menu li a
+{
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
+
+ul.menu li a:hover
+{
+	background-color: crimson;
+}
+
+h1 
+{
+	text-align: center;
+	color: white;
+}
+
+h2 
+{
+	text-align: center;
+	color: white;
+}
+
+h4 
+{
+	text-align: center;
+	color: white;
+}
+
+div iframe
+{
+	display: block;
+	margin: 0 auto;
+	width: 45%;
+	height: 60%;
+}
+
+table, th, td {
+    border: none;
+    border-left: none;
+    border-right: none;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+table#t01 {  
+    background-color: none;
+    color: white;
+    width:50%; 
+    margin-left:25%; 
+    margin-right:25%;
+}

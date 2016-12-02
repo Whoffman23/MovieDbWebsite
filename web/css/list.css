@@ -77,6 +77,12 @@ h1
 	color: white;
 }
 
+h2 
+{
+	text-align: center;
+	color: white;
+}
+
 .movie
 {
 	display: inline-block;
