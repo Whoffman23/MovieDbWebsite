@@ -61,20 +61,54 @@ div iframe
 	height: 60%;
 }
 
-table, th, td {
+table, th, td 
+{
     border: none;
     border-left: none;
     border-right: none;
     border-collapse: collapse;
 }
-th, td {
+
+th, td 
+{
     padding: 5px;
     text-align: center;
+    font-size: 25px;
 }
-table#t01 {  
+
+table#t01 
+{  
     background-color: none;
     color: white;
     width:50%; 
     margin-left:25%; 
     margin-right:25%;
+}
+
+div form input[type=text]
+{
+	display: inline-block;
+	margin: 0 auto;
+	margin-left: 30%;
+  	width: 400px;
+  	height: 45px;
+  	font-size: 20px;
+  	background-color: white;
+  	color: black;
+}
+
+div form input[type=submit]
+{
+	display: inline-block;
+	margin: 0 auto;
+	width:200px;
+	height:45px;
+	font-size: 20px;
+	background-color: khaki;
+	color: black;
+}
+
+div form input[type=submit]:hover
+{
+	background-color: gold;
 }

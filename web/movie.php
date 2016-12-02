@@ -13,10 +13,12 @@
 
 	<h1> Movie Search </h1>
 
+	<div>
 	<form method="post">
 		<input name="Title" type="text"/>
-		<input type="submit" name="search" value="Search">
+		<input type="submit" name="search" value="Search" placeholder="Search by Movie Title">
 	</form>
+	</div>
 
 	<?php
 		if(isset($_POST['Title']) && isset($_POST['search']))
