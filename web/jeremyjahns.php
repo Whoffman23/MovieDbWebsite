@@ -1,6 +1,6 @@
 <?php
-	require_once("connect.php");
-	include("navbar.html");
+	require_once("includes/connect.php");
+	include("includes/navbar.html");
 ?>
 
 <html>
