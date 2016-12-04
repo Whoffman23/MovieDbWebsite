@@ -76,6 +76,6 @@ table#t01 {
 		echo "</table>";
 	}
 	?>
-
+	<br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
